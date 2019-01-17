@@ -1,0 +1,16 @@
+root --> TLD --> authoritative
+there is no rule about having to break down a hostname by subdomains, the TLD could map the entire hostname (vs a subdomain) to the authoritative DNS server with the NS record
+the primary purpose of local DNS servers is to cache
+network transmission is about twice the speed of light despite routers and queueing
+in an iterative DNS request, more DNS servers are caching resource records compared to an iterative DNS request
+the response message will contain all the resource records that were returned by every DNS server along a recursive request
+- useful for caching
+- useful for amplification attacks
+normally we set the TTL very high to optimize end users for quick DNS resolution through caching
+when one wants to change the IP address already registered to a hostname, one first updates the A record with a low TTL, wait some time, then update to the new IP address
+there is another TTL which is a measure of the number of hops, this prevents accumulation of packets when there are loops
+
+syscalls:
+for connections: socket -> bind -> listen -> accept, send and receive
+for UDP: socket -> bind, sendto and receivefrom
+

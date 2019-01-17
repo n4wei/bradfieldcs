@@ -1,0 +1,32 @@
+DNS, is not just the name, but also the protocol for looking up a string URL for it's IP addr
+IP protocol has the routing table and knows where the data should go
+the OS implments all the layers below the app layer
+
+syscalls:
+gethostbyname does DNS resolution (not threadsafe, do not use)
+getaddrinfo does DNS resolution
+socket creates a file descriptor that is a connection to another host
+accept, send, bind (for interacting with sockets)
+
+the kernel is a controlled API to system calls that are run with priviledge
+a connection is a persistent connection between two hosts, eg. TCP; UDP is not a connection
+the difference between http 1.1 and 1.0 is that 1.1 keeps the connection alive so it can be reused for multiple requests, and avoid the overhead of establishing TCP connections many times
+DNS uses UDP: the data is small enough to fit into a single packet (does not require segmentation), is faster (does not require TCP handshake)
+an IP addr is a network interface (could be a host, router, etc.)
+processes are bound to ports
+
+layers of the network: app, transport, network, physical
+- the port is part of the transport header (a port is two bytes, it was arbitrarily decided, there is a source and destination port in the transport header)
+- the IP addr is part of the network header
+
+http encoded data at the app layer:
+GET /?query_params http/1.1\r\n
+key:value\r\n\r\n  (headers)
+<body>
+
+use wireshark to listen to network traffic, it shows the headers added by each layer
+use hexdump to view binary files
+
+network protocols use big endian to encode its bytes (eg. left represents higher values)
+x86 use little endian
+

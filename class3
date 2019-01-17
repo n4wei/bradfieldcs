@@ -1,0 +1,44 @@
+telnet opens a TCP/UDP socket and one can send arbitrary bytes, similar to netcat
+http.cat is a good resource for http status codes
+
+nc can be used to send HTTP requests:
+```
+$ nc www.google.com 80
+GET / HTTP/1.1
+
+```
+
+nc can be used to start a server:
+```
+$ nc -l 3000
+<req from client>
+
+HTTP/1.1 200 OK
+
+put the body here
+
+<ctrl-d to signal end of input>
+```
+
+SMTP is used between client and server, and between servers
+the HTTP message was designed in plain text because the inventor liked SMTP which used plaintext for client/server communication
+
+HTTP 2.0 allows the server to push data to the client (push) without the client making the requests for it (useful when the server needs to send the client many files)
+QUIC (by google) is an application protocol that transports data using the UDP transport protocol; http 3 uses it
+
+the client/server relationship is built with the concept of Postel in mind (be strict about what you send but be lenient about what you can accept)
+
+auth header: `Authorization: Basic<base64encoded username:password>` (base64 encoding is used because its easier to parse than plaintext and is transmission safe)
+`Referer` header is the page from which the client was previously on
+
+http vs rpc:
+use http to serve resources that are relational
+use rpc to do functional things such as performing work and returning the result
+
+127.0.0.1(localhost) vs 0.0.0.0:
+127.0.0.1 is bound to the loopback network interface
+0.0.0.0 is bound to all ipv4 network interfaces
+
+a proxy is a machine that handles requests from clients and sit between clients and the server
+a reverse proxy is one that is on the same machine as the server (uses socket stream)
+
