@@ -1,0 +1,18 @@
+- parse the global header
+- does a frame have the same length?
+- how to identify the beginning and end of a frame?
+- look up the headers of each protocol to find the beginning and end of each layer of the onion
+
+protocols:
+App data
+TCP
+IP
+Ethernet
+
+
+pcap header:
+snapshot length = 5234
+link layer header type = 1 (ethernet)
+
+1st frame header:
+
