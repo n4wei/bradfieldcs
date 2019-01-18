@@ -1,0 +1,32 @@
+reliable data delivery
+
+multiplexer filters input signals and only sends one signal over the wire at any given time
+demultiplexer takes the transfered signal and passes it to the correct place
+muxing and demuxing is done via ports
+
+UDP:
+(for tcp too) uses md5 checksums which is fast but is not robust: do more research on this -> (can detect 1 or 2 bit errors, but cannot detect two 1 bit errors)
+no flow control
+no congestion control
+no acknowledgement of receipt
+no resending
+
+full duplex between two hosts (A and B can send and receive from eachother)
+
+things that could go wrong when transfering packets:
+packets are dropped when router buffers are full
+corrupted
+out of order
+duplicated
+
+TCP:
+the initial TCP handshake establishes the window size for flow control
+uses sequence number to deal with out of order and duplicated packets
+starting seq number if randomly generated (there's a man in the middle attack that took advantage of seq numbers always starting from a fixed number)
+cumulative ack, dupack (duplicate ack), timeout is set dynamically = RTT + 4*variance
+
+a FIN bit is sent on the last request to signal the end of sending in a three way ack process, same as the initial handshake
+
+
+
+
